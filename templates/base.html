@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ShelfWise{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% block head %}{% endblock %}
+    <style>
+        body { visibility: visible; }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a class="brand" href="/">ShelfWise</a>
+            <nav class="nav-links">
+                {% if session.get('username') %}
+                    <span class="muted">Hi, {{ session['username'] }}</span>
+                    {% if session.get('role') == 'librarian' %}
+                        <a class="nav-link" href="/view_books">Books</a>
+                        <a class="nav-link" href="/add_book">Add Book</a>
+                        <a class="nav-link" href="/all_transactions">Transactions</a>
+                    {% else %}
+                        <a class="nav-link" href="/view_books">Browse</a>
+                        <a class="nav-link" href="/my_transactions">My Books</a>
+                    {% endif %}
+                    <a class="btn btn-danger btn-sm" href="/logout">Logout</a>
+                {% else %}
+                    <a class="nav-link" href="/login_librarian">Librarian Login</a>
+                    <a class="nav-link" href="/login_member">Member Login</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer container">
+        <span class="muted">&copy; {{ current_year }} ShelfWise</span>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard · ShelfWise{% endblock %}
+{% block content %}
+  <section class="stack">
+    <h1>Welcome, {{ username }}!</h1>
+    <p class="subtitle">Quick actions</p>
+
+    {% if role == 'librarian' %}
+      <div class="cards">
+        <div class="card stack">
+          <h3>Books</h3>
+          <div class="row">
+            <a href="/view_books" class="btn btn-secondary">Manage Books</a>
+            <a href="/add_book" class="btn btn-primary">Add Book</a>
+          </div>
+        </div>
+        <div class="card stack">
+          <h3>Transactions</h3>
+          <a href="/all_transactions" class="btn btn-secondary">View All</a>
+        </div>
+      </div>
+    {% else %}
+      <div class="cards">
+        <div class="card stack">
+          <h3>Explore</h3>
+          <a href="/view_books" class="btn btn-primary">Browse Books</a>
+        </div>
+        <div class="card stack">
+          <h3>My Activity</h3>
+          <a href="/my_transactions" class="btn btn-secondary">Borrowed Books</a>
+        </div>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}
+

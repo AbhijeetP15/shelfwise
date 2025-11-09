@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Edit Book · ShelfWise{% endblock %}
+{% block content %}
+  <section class="container" style="max-width:680px">
+    <div class="card stack">
+      <h1>Edit Book</h1>
+      <form method="POST" class="stack">
+        <div class="row" style="gap:16px">
+          <div class="stack" style="flex:1;min-width:240px">
+            <label>Title</label>
+            <input type="text" name="title" value="{{ book[1] }}" required>
+          </div>
+          <div class="stack" style="flex:1;min-width:240px">
+            <label>Author</label>
+            <input type="text" name="author" value="{{ book[2] }}" required>
+          </div>
+        </div>
+        <div class="row" style="gap:16px">
+          <div class="stack" style="flex:1;min-width:200px">
+            <label>ISBN</label>
+            <input type="text" name="isbn" value="{{ book[3] }}" required>
+          </div>
+          <div class="stack" style="flex:1;min-width:200px">
+            <label>Genre</label>
+            <input type="text" name="genre" value="{{ book[4] }}" required>
+          </div>
+          <div class="stack" style="width:160px">
+            <label>Copies</label>
+            <input type="number" name="copies" value="{{ book[5] }}" min="0" required>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Update</button>
+          <a class="btn btn-secondary" href="/view_books">Back</a>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock %}
+

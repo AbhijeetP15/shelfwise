@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Welcome · ShelfWise{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Welcome to ShelfWise</h1>
+  <p class="subtitle">A simple, modern library system — now in dark mode.</p>
+</section>
+
+<div class="cards">
+  <div class="card stack">
+    <h3>Librarian</h3>
+    <div class="row">
+      <a class="btn btn-primary" href="/login_librarian">Login</a>
+      <a class="btn btn-secondary" href="/signup_librarian">Sign Up</a>
+    </div>
+  </div>
+  <div class="card stack">
+    <h3>Library Member</h3>
+    <div class="row">
+      <a class="btn btn-primary" href="/login_member">Login</a>
+      <a class="btn btn-secondary" href="/signup_member">Sign Up</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

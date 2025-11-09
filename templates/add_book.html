@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Add Book · ShelfWise{% endblock %}
+{% block content %}
+  <section class="container" style="max-width:680px">
+    <div class="card stack">
+      <h1>Add a New Book</h1>
+      <form method="POST" class="stack">
+        <div class="row" style="gap:16px">
+          <div class="stack" style="flex:1;min-width:240px">
+            <label>Title</label>
+            <input type="text" name="title" required>
+          </div>
+          <div class="stack" style="flex:1;min-width:240px">
+            <label>Author</label>
+            <input type="text" name="author" required>
+          </div>
+        </div>
+        <div class="row" style="gap:16px">
+          <div class="stack" style="flex:1;min-width:200px">
+            <label>ISBN</label>
+            <input type="text" name="isbn" required>
+          </div>
+          <div class="stack" style="flex:1;min-width:200px">
+            <label>Genre</label>
+            <input type="text" name="genre" required>
+          </div>
+          <div class="stack" style="width:160px">
+            <label>Copies</label>
+            <input type="number" name="copies" min="0" required>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-success" type="submit">Add Book</button>
+          <a class="btn btn-secondary" href="/view_books">Back</a>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock %}
+

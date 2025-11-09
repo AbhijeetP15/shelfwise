@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}My Transactions · ShelfWise{% endblock %}
+{% block content %}
+  <section class="stack">
+    <h1>My Borrowed Books</h1>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Borrowed</th>
+            <th>Returned</th>
+            <th>Fine</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for txn in transactions %}
+          <tr>
+            <td>{{ txn[0] }}</td>
+            <td>{{ txn[1] }}</td>
+            <td>{{ txn[2] }}</td>
+            <td>{{ txn[3] if txn[3] else '—' }}</td>
+            <td>${{ txn[4] if txn[4] else '0.00' }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}
+

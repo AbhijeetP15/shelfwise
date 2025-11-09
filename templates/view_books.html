@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Books · ShelfWise{% endblock %}
+{% block content %}
+  <section class="stack">
+    <h1>Books</h1>
+    <form method="POST" class="row" style="align-items:center">
+      <input type="text" name="search" placeholder="Search by title, author, or genre" style="flex:1;min-width:260px">
+      <button class="btn btn-primary" type="submit">Search</button>
+      <a class="btn btn-secondary" href="/view_books">Reset</a>
+    </form>
+
+    <div class="spacer"></div>
+
+    {% if books %}
+      <div class="stack">
+        {% for book in books %}
+          <div class="card row" style="justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:600">{{ book[1] }}</div>
+              <div class="muted">by {{ book[2] }} • {{ book[4] }} • Copies: {{ book[5] }}</div>
+            </div>
+            <div class="row">
+              {% if session['role'] == 'librarian' %}
+                <a href="/edit_book/{{ book[0] }}" class="btn btn-secondary btn-sm">Edit</a>
+                <a href="/delete_book/{{ book[0] }}" class="btn btn-danger btn-sm">Delete</a>
+              {% else %}
+                <a href="/borrow_book/{{ book[0] }}" class="btn btn-primary btn-sm">Borrow</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted">No books found.</p>
+    {% endif %}
+  </section>
+{% endblock %}
+
